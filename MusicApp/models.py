@@ -1,18 +1,27 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator
+from django.contrib.auth.models import AbstractUser
 
 
-class Profile(models.Model):
-    username = models.CharField(max_length=15,validators=[
-            RegexValidator(
-                r'^[a-zA-Z0-9_]*$',
-            )
-        ]
-    )
+class MyMusicAppUser(AbstractUser):
+    DO_NOT_SHOW = ''
+    GENDERS = [
+        (1, "Male"),
+        (2, "Female"),
+        (DO_NOT_SHOW, ''),
+    ]
 
-    email = models.EmailField()
+    profile_picture = models.URLField(null=True, blank=True)
+    gender = models.CharField(max_length=11, choices=GENDERS, null=True, blank=True, default=DO_NOT_SHOW)
 
-    age = models.IntegerField(validators=[MinValueValidator(0)], null=True, blank=True)
+
+    def get_user_name(self):
+        if self.first_name and self.last_name:
+            return self.first_name + ' ' + self.last_name
+        elif self.first_name or self.last_name:
+            return self.first_name or self.last_name
+        else:
+            return self.username
 
 
 class Album(models.Model):
@@ -34,6 +43,6 @@ class Album(models.Model):
     description = models.TextField(blank= True, null=30)
     image = models.URLField()
     price = models.FloatField(validators=[MinValueValidator(0)])
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
 
 

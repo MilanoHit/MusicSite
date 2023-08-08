@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    
+    
+    <div class="login-register-div">
+        <div class="login-register-box">
+
+            <!-- Start Register Form-->
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <!-- Register Button-->
+                <button type="submit">Register</button>
+            </form>
+            <!-- End Register Form -->
+        </div>
+        <div class="second-option"><p>Have an account?
+            <!-- Link to Login Page-->
+            <a href="{% url 'login' %}">Log in</a></p>
+        </div>
+    </div>
+    <!-- End Register Section-->
+    
+    
+{% endblock %}
