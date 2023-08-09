@@ -1,20 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<section class="createPage">
+
+
+<section class="createReview">
     <div class="form-container">
-        <form {% url 'add-album' %} method="post">
+        <form  method="post">
             <fieldset>
-                <legend>Add Album</legend>
+                <legend>Make a Review</legend>
                 <div class="form-fields">
                     <!-- Form for Adding Album -->
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    {{ form }}
                 </div>
                 <!-- Button for Adding Album -->
-                <button class="add-album" type="submit">Add New Album</button>
+                <button class="add-album" type="submit">Submit Review</button>
             </fieldset>
         </form>
     </div>
 </section>
+
+
 {% endblock %}

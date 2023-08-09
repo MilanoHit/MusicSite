@@ -1,27 +1,39 @@
 {% extends "base.html" %}
+{% load custom_filters %}
 {% load static %}
 {% block content %}
-    
-    
-    <div class="login-register-div">
-        <div class="login-register-box">
+
+    <div class="registerPage">
+        <div class="register-form-container">
 
             <!-- Start Register Form-->
-            <form method="post">
+            <form method="post" action="{% url 'register' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-
+                <fieldset>
+                    <legend>Register</legend>
+                    <div class="form-fields">
+                        {{ form.username.errors }}
+                        {{ form.username|placeholder:'Username' }}
+                        {{ form.email.errors }}
+                        {{ form.email|placeholder:'Email' }}
+                        {{ form.password1.errors }}
+                        {{ form.password2.errors }}
+                        {{ form.password1|placeholder:'Password' }}
+                        {{ form.password2|placeholder:'Repeat password' }}
+                    </div>
+                </fieldset>
                 <!-- Register Button-->
-                <button type="submit">Register</button>
+                <button class="add-album" type="submit">Register</button>
             </form>
             <!-- End Register Form -->
-        </div>
-        <div class="second-option"><p>Have an account?
-            <!-- Link to Login Page-->
-            <a href="{% url 'login' %}">Log in</a></p>
+
+            <div class="second-option"><p>Have an account?
+                <!-- Link to Login Page-->
+                <a href="{% url 'login' %}">Log in</a></p>
+            </div>
         </div>
     </div>
     <!-- End Register Section-->
-    
-    
+
+
 {% endblock %}

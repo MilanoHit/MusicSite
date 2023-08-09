@@ -1,35 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Music Reviews</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-<header>
-    <a href="{% url 'home' %}"><h1>Music Imdb</h1></a>
-    <nav>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'register' %}">Register</a>
-    </nav>
-</header>
+{% block content %}
 
-<main>
-    <p>Explore and share your favorite albums and reviews!</p>
-    <a href="{% url 'add-album' %}" class="btn">Get Started</a>
+
+
     <div class="album-carousel">
         {% for album in albums %}
-            <img src="{{ album.cover_image.url }}" alt="{{ album.title }}" class="carousel-image">
+            <img src="{{ album.image }}" alt="{{ album.album_name }}" class="carousel-image">
         {% endfor %}
     </div>
-</main>
 
-<footer>
-    <p>&copy; 2023 Music Reviews. All rights reserved.</p>
-</footer>
-<script src="{% static 'js/carousel.js' %}"></script>
-</body>
-</html>
+
+{% endblock %}

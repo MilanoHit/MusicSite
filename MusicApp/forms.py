@@ -1,5 +1,5 @@
 from django import forms
-from MusicApp.models import MyMusicAppUser, Album
+from MusicApp.models import MyMusicAppUser, Album, Review
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
 
 
@@ -47,6 +47,17 @@ class AlbumDeleteForm(AddAlbumForm):
             field.widget.attrs['readonly'] = 'readonly'
 
 
-
-
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = '__all__'
+        exclude = ('profile', 'album')
+        widgets = {
+            'description': forms.Textarea(attrs={'placeholder': 'Description'}),
+            'rating': forms.Select(attrs={'placeholder': 'Rating'}),
+        }
+        labels = {
+            'description': 'Description',
+            'rating': 'Rating',
+        }
 

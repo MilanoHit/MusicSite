@@ -1,19 +1,14 @@
-/*@import "typography.css";*/
-/*@import "home.css";*/
-/*@import "login.css";*/
-/*@import "create.css";*/
-/*@import "catalog.css";*/
-/*@import "details.css";*/
+
 
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #111; /* Dark grey background */
-    color: #fff; /* White text color */
-    display: flex; /* Use flexbox layout */
-    flex-direction: column; /* Stack content vertically */
-    min-height: 100vh; /* Ensure body covers the full viewport height */
+    background-color: #f1e5e5;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -23,6 +18,19 @@ header {
     padding: 1rem;
 }
 
+nav {
+    background-color: #006400;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
 header a {
     color: #fff;
     text-decoration: none;
@@ -30,6 +38,7 @@ header a {
 
 main {
     flex: 1;
+    margin: 2rem;
 }
 
 .btn {
@@ -41,6 +50,7 @@ main {
     border: none;
     cursor: pointer;
 }
+
 
 footer {
     background-color: #333;
@@ -54,12 +64,84 @@ footer {
     display: flex;
     overflow: hidden;
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 .carousel-image {
     width: 100%;
-    height: auto;
+    flex-shrink: 0;
     transition: transform 1s ease-in-out;
+}
+
+.createPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.registerPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.register-form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(47, 147, 28, 0.8);
+    width: 80%;
+    max-width: 600px;
+    text-align: center; /* Center the content within the container */
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(47, 147, 28, 0.8);
+    width: 80%;
+    max-width: 400px;
+    text-align: center; /* Center the content within the container */
+}
+
+.form-fields {
+    margin-bottom: 20px;
+}
+
+.form-fields input {
+    display: block; /* Display each input field on a new line */
+    width: 95%;
+    max-width: 580px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-album {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #006400;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-album:hover {
+    background-color: #004d00;
 }

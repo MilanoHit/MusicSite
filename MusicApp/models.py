@@ -46,3 +46,17 @@ class Album(models.Model):
     profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
 
 
+class Review(models.Model):
+    CHOICES = [
+        ("1", "1"),
+        ("2", "2"),
+        ("3", "3"),
+        ("4", "4"),
+        ("5", "5"),
+
+    ]
+
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    description = models.TextField(blank=True, null=30)
+    rating = models.CharField(choices=CHOICES, max_length=30)
+    profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
