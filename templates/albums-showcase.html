@@ -4,27 +4,40 @@
 
 
     <h1>All Albums</h1>
-    <ul>
+    <ul class="album-list">
         {% for album in albums %}
-            <li>{{ album.album_name }}</li>
-            <img src="{{ album.image }}" alt="{{ album.album_name }}" >
+            <li class="album-item">
+
+                <img src="{{ album.image }}" alt="{{ album.album_name }}" class="album-image">
+                <div class="album-details">
+                    <h3>{{ album.album_name }} - {{ album.artist }}</h3>
+                    <h3>Rating: {{ album.average_rating|floatformat:2 }} </h3>
+                    <!-- Display other album details here -->
+                    <div class="description-box">
+                        <p>{{ album.description }}</p>
+                    </div>
+                    <div class="description-box">
+                        <a href="{% url 'review' album.id%}">Make a review</a>
+                    </div>
+                </div>
+            </li>
         {% endfor %}
     </ul>
     <!-- Display pagination links -->
     <div class="pagination">
         <span class="step-links">
-            {% if albums.has_previous %}
+            {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ albums.previous_page_number }}">previous</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
             {% endif %}
 
             <span class="current-page">
-                Page {{ albums.id }} of {{ albums.paginator.num_pages }}.
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
             </span>
 
-            {% if albums.has_next %}
-                <a href="?page={{ albums.next_page_number }}">next</a>
-                <a href="?page={{ albums.paginator.num_pages }}">last &raquo;</a>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </span>
     </div>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="editProfile">
+        <div class="edit-profile-form-container">
+
+            <!-- Start Register Form-->
+            <form method="post" action="{% url 'profile-edit' request.user.id%}">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Edit Profile</legend>
+                    <div class="form-fields">
+                        {{ form.as_p }}
+                    </div>
+                </fieldset>
+                <!-- Register Button-->
+                <button class="add-album" type="submit">Edit Profile</button>
+            </form>
+            <!-- End Register Form -->
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

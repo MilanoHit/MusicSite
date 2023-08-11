@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="profileDetailsMain">
+        <div class="edit-profile-form-container">
+
+            <!-- Start Register Form-->
+
+
+
+                <legend>Profile Details</legend>
+                <div class="profileDetails">
+                    <img src="{{ profile.profile_picture }}" alt="No Profile Picture" class="album-image">
+                    <p>First Name: {{ profile.first_name }}</p>
+                    <p>Last Name: {{ profile.last_name }}</p>
+                    <p>Email: {{ profile.email }}</p>
+                    <p>Gender: {{ profile.gender }}</p>
+
+                </div>
+
+            <!-- Register Button-->
+
+            <!-- End Register Form -->
+
+
+        </div>
+    </div>
+
+
+{% endblock %}

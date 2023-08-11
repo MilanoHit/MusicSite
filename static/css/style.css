@@ -79,7 +79,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 100vh;
 }
 
 .loginPage {
@@ -96,8 +96,50 @@ footer {
     height: 80vh;
 }
 
+.editProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.profileDetails {
+    display: block;
+    width: 95%;
+    max-width: 580px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.profileDetailsMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.createReview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+
 .register-form-container {
     background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(47, 147, 28, 0.8);
+    width: 80%;
+    max-width: 600px;
+    text-align: center; /* Center the content within the container */
+}
+
+.edit-profile-form-container{
+     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(47, 147, 28, 0.8);
@@ -144,4 +186,41 @@ footer {
 
 .add-album:hover {
     background-color: #004d00;
+}
+
+
+.album-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+
+}
+
+.album-item {
+    width: calc(33.33% - 20px); /* Adjust this based on your layout */
+    position: relative;
+}
+
+.album-image {
+    width: 60%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    margin-left: 90px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.album-details {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.description-box {
+    margin-bottom: 10px;
 }

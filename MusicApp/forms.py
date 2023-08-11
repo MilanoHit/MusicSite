@@ -20,7 +20,7 @@ class AddAlbumForm(forms.ModelForm):
     class Meta:
         model = Album
         fields = '__all__'
-        exclude = ('profile',)
+        exclude = ('profile', 'average_rating')
         widgets = {
             'album_name': forms.TextInput(attrs={'placeholder': 'Album Name'}),
             'artist': forms.TextInput(attrs={'placeholder': 'Artist'}),
@@ -61,3 +61,15 @@ class ReviewForm(forms.ModelForm):
             'rating': 'Rating',
         }
 
+class MyMusicAppUserEdit(forms.ModelForm):
+    class Meta():
+        model = MyMusicAppUser
+        fields = ('username', 'first_name', 'last_name', 'email', 'profile_picture', 'gender')
+        exclude = ('password',)
+        labels= {'username': "Username",
+                 'first_name': "First Name:",
+                 'last_name': 'Last Name:',
+                 'email': 'Email',
+                 'profile_picture': 'Image',
+                 'gender': "Gender"
+                 }

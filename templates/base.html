@@ -18,8 +18,10 @@
             <a href="{% url 'register' %}">Register</a>
         {% else %}
             <a href="{% url 'add-album' %}">Add Album</a>
-            <a href="{% url 'logout' %}">Logout</a>
             <a href="{% url 'showcase' %}">Album List</a>
+            <a href="{% url 'profile-details' request.user.id%}">Profile Details</a>
+            <a href="{% url 'profile-edit' request.user.id%}">Edit Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
 
         {% endif %}
     </nav>

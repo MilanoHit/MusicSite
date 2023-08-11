@@ -1,13 +1,14 @@
 from django.db import models
 from django.core.validators import RegexValidator, MinValueValidator
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import Group as DjangoGroup
 
 
 class MyMusicAppUser(AbstractUser):
     DO_NOT_SHOW = ''
     GENDERS = [
-        (1, "Male"),
-        (2, "Female"),
+        ('male', "Male"),
+        ('female', "Female"),
         (DO_NOT_SHOW, ''),
     ]
 
@@ -44,6 +45,7 @@ class Album(models.Model):
     image = models.URLField()
     price = models.FloatField(validators=[MinValueValidator(0)])
     profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
+    average_rating = models.FloatField(null=True, blank=True)
 
 
 class Review(models.Model):
@@ -60,3 +62,4 @@ class Review(models.Model):
     description = models.TextField(blank=True, null=30)
     rating = models.CharField(choices=CHOICES, max_length=30)
     profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
+
