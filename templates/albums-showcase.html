@@ -18,6 +18,10 @@
                     </div>
                     <div class="description-box">
                         <a href="{% url 'review' album.id%}">Make a review</a>
+                        <a href="{% url 'album-edit' album.id%}">Edit Album</a>
+                        <a href="{% url 'album-details' album.id%}">Details</a>
+                        <a href="{% url 'album-delete' album.id%}">Delete Album</a>
+                        <a href="{% url 'review-list' album.id%}">See All Reviews</a>
                     </div>
                 </div>
             </li>

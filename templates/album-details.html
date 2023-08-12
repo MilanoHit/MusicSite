@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <div class="profileDetailsMain">
+        <div class="edit-profile-form-container">
+
+            <fieldset>
+                <legend>Album Details</legend>
+                <div class="profileDetails">
+                    <img src="{{ album.image }}" alt="No Profile Picture" class="album-image">
+                    <p>Album Name: {{ album.album_name }}</p>
+                    <p>Artist: {{ album.artist }}</p>
+                    <p>Description: {{ album.description }}</p>
+                    <p>Price: {{ album.price }}</p>
+                    <p>Genre: {{ album.genre }}</p>
+
+                </div>
+            </fieldset>
+            <!-- Register Button-->
+
+            <!-- End Register Form -->
+
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h1>All Reviews for {{ album.album_name }}</h1>
+    <ul class="album-list">
+        {% if not reviews %}
+            <h3>No reviews for this album</h3>
+        {% else %}
+            {% for review in reviews %}
+                <li class="album-item">
+
+                    <div class="album-details">
+                        <h3>{{ review.description }}</h3>
+                        <h3>Rating: {{ review.rating }} </h3>
+                        <h3>Likes: {{ review.like_set.count }} Dislikes: {{ review.dislike_set.count }} </h3>
+                        <!-- Display other album details here -->
+
+                    </div>
+                    <a href="{% url 'like-review' review.id%}">Like</a>
+                    <a href="{% url 'dislike-review' review.id%}">Dislike</a>
+                </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    <!-- Display pagination links -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+{% endblock %}

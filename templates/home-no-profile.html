@@ -4,11 +4,25 @@
 
 
 
-    <div class="album-carousel">
-        {% for album in albums %}
-            <img src="{{ album.image }}" alt="{{ album.album_name }}" class="carousel-image">
-        {% endfor %}
-    </div>
+    <div class="carousel-container">
+        <div class="carousel">
 
+            {% for album in albums %}
+                <div class="album">
+                    <div class="image-carousel">
+                        <div class="image-group">
+                            <img src="{{ album.image }}" alt="{{ album.album_name }}" class="carousel-image">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <button class="prev-button">Previous</button>
+        <button class="next-button">Next</button>
+    </div>
+    <script>
+        var albumsData = JSON.parse('{{ albums_json|escapejs }}');
+    </script>
 
 {% endblock %}

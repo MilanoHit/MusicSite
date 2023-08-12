@@ -1,20 +1,28 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const carousel = document.querySelector(".carousel");
+    const prevButton = document.querySelector(".prev-button");
+    const nextButton = document.querySelector(".next-button");
 
-let currentIndex = 0;
-const images = document.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+    const albumsPerPage = 3; // Number of albums displayed per slide
 
-// Adjust the width and height of all images
-const targetWidth = 200; // Change this to your desired width
-const targetHeight = 200; // Change this to your desired height
+    function showSlide(index) {
+        const translateXValue = -index * (100 / albumsPerPage); // Display albumsPerPage albums at a time
+        carousel.style.transform = `translateX(${translateXValue}%)`;
+    }
 
-images.forEach(image => {
-    image.style.width = targetWidth + 'px';
-    image.style.height = targetHeight + 'px';
+    function nextSlide() {
+        currentIndex = (currentIndex + albumsPerPage) % albumsData.length;
+        showSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - albumsPerPage + albumsData.length) % albumsData.length;
+        showSlide(currentIndex);
+    }
+
+    prevButton.addEventListener("click", prevSlide);
+    nextButton.addEventListener("click", nextSlide);
+
+    showSlide(currentIndex);
 });
-
-function rotateCarousel() {
-    images[currentIndex].style.transform = 'translateX(-100%)';
-    currentIndex = (currentIndex + 1) % images.length;
-    images[currentIndex].style.transform = 'translateX(0)';
-}
-
-setInterval(rotateCarousel, 500); // Rotate every 5 seconds
