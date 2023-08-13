@@ -47,6 +47,9 @@ class Album(models.Model):
     profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
     average_rating = models.FloatField(null=True, blank=True)
 
+    def __str__(self):
+        return self.album_name
+
 
 class Review(models.Model):
     CHOICES = [
@@ -63,3 +66,12 @@ class Review(models.Model):
     rating = models.CharField(choices=CHOICES, max_length=30)
     profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
 
+
+class Like(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
+
+
+class Dislike(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    profile = models.ForeignKey(MyMusicAppUser, on_delete=models.CASCADE)
